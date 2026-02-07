@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> p(n + 1);
+    for (int i = 1; i <= n; i++) cin >> p[i];
+
+    vector<int> sufVal(n + 2, -1), sufPos(n + 2, -1);
+
+    for (int i = n; i >= 1; i--) {
+        if (p[i] >= sufVal[i + 1]) {
+            sufVal[i] = p[i];
+            sufPos[i] = i;
+        } else {
+            sufVal[i] = sufVal[i + 1];
+            sufPos[i] = sufPos[i + 1];
+        }
+    }
+
+    int l = -1, r = -1;
+    for (int i = 1; i <= n; i++) {
+        if (sufVal[i] > p[i]) {
+            l = i;
+            r = sufPos[i];
+            break;
+        }
+    }
+
+    if (l != -1) {
+        reverse(p.begin() + l, p.begin() + r + 1);
+    }
+
+    for (int i = 1; i <= n; i++) {
+        cout << p[i] << (i == n ? '\n' : ' ');
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) solve();
+    return 0;
+}
