@@ -4,7 +4,7 @@ Accepted solutions for Codeforces problems.
 
 - Language: C++
 - **Codeforces Handle:** => OopsAccepted
-- rating now is : 950
+- rating now is : 1085
 
 ## Structure
 - Solutions organized by problem rating: 800, 900, 1000, ...
